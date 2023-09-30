@@ -17,10 +17,19 @@ using UnityEngine;
 	   void Start()
 	   {
 
-		   Invoke("CreationProcess", 0.3f);
+		   //Invoke("CreationProcess", 0.3f);
 
 
 	   }
+	   
+	   void Update()
+    {
+	    if (Input.GetKeyDown("space"))
+	    {
+		    CreationProcess();
+	    }
+    }
+
 	   
 	   
 	   void CreationProcess()
@@ -45,5 +54,8 @@ using UnityEngine;
 		   cube4.transform.position = parentCube.transform.position + new Vector3(0, 0, -1);
 		   Instantiate(CubePrefab,cube4.transform.position,Quaternion.identity ).GetComponent<neighboorCreation>().parentCube = gameObject;
 	   	
+	   	
+		   Destroy(gameObject.GetComponent<neighboorCreation>(),0.1f 
+		   );
 	   }
    }
