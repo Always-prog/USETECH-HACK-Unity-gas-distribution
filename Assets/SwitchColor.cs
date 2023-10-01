@@ -5,9 +5,10 @@ using UnityEngine;
 public class SwitchColor : MonoBehaviour
 {
 	
-	Color[] colors = { Color.blue, Color.red, Color.green, Color.yellow };
+	Color[] colors = { Color.blue };
 	
 	public float transparency;
+	public int density = 0;
 
 	
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class SwitchColor : MonoBehaviour
 	    rend.material.color = colors[Random.Range(0, colors.Length)];
 	    
 	    Color oldColor = GetComponent<Renderer>().material.color;
-	    Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, transparency);
+	    Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, 0.1f);
 	    GetComponent<Renderer>().material.SetColor("_Color", newColor);
 
     }
@@ -25,7 +26,9 @@ public class SwitchColor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+	    Color oldColor = GetComponent<Renderer>().material.color;
+	    Color newColor = new Color(oldColor.r, oldColor.g, oldColor.b, density/100f);
+	    GetComponent<Renderer>().material.SetColor("_Color", newColor);
     }
     
     

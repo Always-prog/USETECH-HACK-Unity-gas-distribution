@@ -12,6 +12,7 @@ using UnityEngine;
    	
    	public GameObject emptyObject;
  
+	   public float density;
    	
    	
 	   void Start()
@@ -26,7 +27,7 @@ using UnityEngine;
     {
 	    if (Input.GetKeyDown("space"))
 	    {
-		    CreationProcess();
+		    //CreationProcess();
 	    }
     }
 
@@ -55,7 +56,7 @@ using UnityEngine;
 		   Instantiate(CubePrefab,cube4.transform.position,Quaternion.identity ).GetComponent<neighboorCreation>().parentCube = gameObject;
 	   	
 	   	
-		   Destroy(gameObject.GetComponent<neighboorCreation>(),0.1f 
-		   );
+		   //Destroy(gameObject.GetComponent<neighboorCreation>(),0.1f 
+		   //);
 	   }
    }
