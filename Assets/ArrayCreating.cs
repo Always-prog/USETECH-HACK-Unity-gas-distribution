@@ -19,7 +19,7 @@ public class ArrayCreating : MonoBehaviour
 	public List<GameObject> cubes= new List<GameObject>();
 	public List<GameObject> cubesZarazhen= new List<GameObject>();
 
-	public float interval = 1f;
+	public float interval = 5f;
 
 	private float timer = 0f;
 	
@@ -70,33 +70,45 @@ public class ArrayCreating : MonoBehaviour
 		//	}
 		//}
 		
-		cubeOchag.GetComponent<SwitchColor>().density = 100;
+		//cubeOchag.GetComponent<SwitchColor>().density = 100;
 		
-		List<GameObject> cubesZarazhenNew= new List<GameObject>();
+		//List<GameObject> cubesZarazhenNew= new List<GameObject>();
 		
-		for (int i = 0; i < cubesZarazhen.Count; i++) {
-			GameObject zarazka = cubesZarazhen[i];
+		//for (int i = 0; i < cubesZarazhen.Count; i++) {
+		//	GameObject zarazka = cubesZarazhen[i];
 			
-			if (zarazka != null){
-				Collider[] colliders = Physics.OverlapSphere(zarazka.transform.position, 1f);
-				foreach(var collider in colliders) {
-					GameObject gameObject = collider.gameObject;
+		//	if (zarazka != null){
+		//		Collider[] colliders = Physics.OverlapSphere(zarazka.transform.position, 1f);
+		//		foreach(var collider in colliders) {
+		//			GameObject gameObject = collider.gameObject;
 					
-					if (gameObject.GetComponent<SwitchColor>() != null){
-						if (gameObject.GetComponent<SwitchColor>().density == 0) {
-							cubesZarazhen.Add(gameObject);
-						}
+		//			//if (gameObject.GetComponent<SwitchColor>().density == 0) {
+		//					//cubesZarazhen.Add(gameObject);
+		//			//}
 					
-						gameObject.GetComponent<SwitchColor>().density = zarazka.GetComponent<SwitchColor>().density/colliders.Length+1;
-						zarazka.GetComponent<SwitchColor>().density /= colliders.Length+1;
-					}
-				}
-			}
-		}
+		//			//gameObject.GetComponent<SwitchColor>().density = zarazka.GetComponent<SwitchColor>().density/colliders.Length+1;
+		//			//zarazka.GetComponent<SwitchColor>().density /= colliders.Length+1;
+						
+		//			Debug.Log(gameObject.GetComponent<SwitchColor>().density);
+		//		}
+		//	}
+		//}
 		
 		//foreach(GameObject zarazka in cubesZarazhenNew){
 		//	cubesZarazhen.Add(zarazka);
 		//}
+		
+		cubeOchag.GetComponent<SwitchColor>().density = 100;
+		
+		Collider[] colliders = Physics.OverlapSphere(cubeOchag.transform.position, 1f);
+				foreach(var collider in colliders) {
+					GameObject gameObject = collider.gameObject;
+					
+					gameObject.GetComponent<SwitchColor>().density +=  10;//cubeOchag.GetComponent<SwitchColor>().density/colliders.Length+1;
+					cubeOchag.GetComponent<SwitchColor>().density /= colliders.Length+1;
+						
+					Debug.Log(gameObject.GetComponent<SwitchColor>().density);
+				}
 		
 	}
 	
