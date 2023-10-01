@@ -1,0 +1,5 @@
+bpy
+opencv-python
+future-fstrings
+
+# Python 3.7
