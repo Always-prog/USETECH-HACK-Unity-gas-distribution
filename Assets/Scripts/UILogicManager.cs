@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +8,8 @@ using UnityEngine.EventSystems;
 public class OnClickPlay : MonoBehaviour
 {
  [Header("Cameras")]
- [SerializeField] private Camera UI_MainMenu_Camera;
+ // Comment because of false logic (Switched to canvas alpha)
+ //[SerializeField] private Camera UI_MainMenu_Camera;
  [SerializeField] private Camera Gameplay_Camera;
 
  [Header("UI")]
@@ -31,8 +32,9 @@ public class OnClickPlay : MonoBehaviour
  }
 
  void TaskOnClick(){
-    UI_MainMenu_Camera.enabled = false;
-    Gameplay_Camera.enabled = true;
+	// Comment because of false logic (Switched to canvas alpha)
+	 //UI_MainMenu_Camera.enabled = false;
+	 //Gameplay_Camera.enabled = true;
     
     UI.enabled = false;
  }
